@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+:root {
+  --darkBlue: hsl(235, 46%, 20%);
+  --desaturatedBlue: HSL(235, 45%, 61%);
+  --paleBlue: hsl(236, 100%, 87%);
+  --white: #fff;
+
+  --borderRadius: 15px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: hsl(226, 43%, 10%);
+  font-family: 'Rubik', sans-serif;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  min-height: 1000px;
+}
+
+.grid__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 35px;
+  padding: 20px 0;
+}
+
+.user-card {
+  grid-row: span 2;
+  width: 255px;
+  height: 566px;
+  background-color: var(--darkBlue);
+}
+
+.card__small {
+  width: 255px;
+  height: 199px;
+  background-color: var(--darkBlue);
+  padding: 30px;
+}
+
+.user-card,
+.card__small {
+  border-radius: var(--borderRadius);
+}
+
+.user-card__background {
+  width: 100%;
+  height: 354px;
+  background-color: hsl(246, 80%, 60%);
+  border-radius: var(--borderRadius);
+  margin-bottom: 52px;
+}
+
+.user-image {
+  width: 78px;
+  height: 78px;
+  margin: 37px 0 0 32px;
+  border: 3px solid var(--white);
+  border-radius: 50%;
+}
+
+.user-card__paragraph {
+  font-size: 15px;
+  color: var(--paleBlue);
+  margin: 43px 0 0 32px;
+}
+
+.user-card__name {
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--white);
+  margin: 3px 0 0 32px;
+}
+
+.user-card__time--container {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+.user-card__time {
+  color: var(--desaturatedBlue);
+  margin-left: 32px;
+}
+
+.user-card__time:hover {
+  color: var(--white);
+  cursor: pointer;
+}
+
+.small-card__container {
+  height: 304px;
+  position: relative;
+  top: -43px;
+}
+
+.small-card__image-container {
+  border-radius: var(--borderRadius);
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 17.42px;
+  position: relative;
+  height: 105px;
+  bottom: -45px;
+  z-index: -1;
+}
+
+.small-card__image-container--orange {
+  background-color: hsl(15, 100%, 70%);
+}
+.small-card__image-container--blue {
+  background-color: hsl(195, 74%, 62%);
+}
+.small-card__image-container--red {
+  background-color: hsl(348, 100%, 68%);
+}
+.small-card__image-container--green {
+  background-color: hsl(145, 58%, 55%);
+}
+.small-card__image-container--purple {
+  background-color: hsl(264, 64%, 52%);
+}
+.small-card__image-container--yellow {
+  background-color: hsl(43, 84%, 65%);
+}
+
+.work-image {
+  height: 78px;
+  width: 78px;
+}
+
+.play-image {
+  width: 90px;
+  height: 90px;
+}
+
+.study-image {
+  height: 78px;
+  width: 78px;
+}
+
+.exercise-image {
+  height: 78px;
+  width: 78px;
+}
+
+.social-image {
+  width: 73.6px;
+  height: 100px;
+}
+
+.self-care-image {
+  height: 72px;
+  width: 66px;
+}
+
+.card__small--title {
+  color: var(--white);
+  font-size: 18px;
+}
+
+.card__small--title-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__small--title-container > img {
+  height: 5px;
+}
