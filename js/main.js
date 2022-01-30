@@ -1,5 +1,8 @@
 import reportDetails from './reportDetails.js';
 
-const details = JSON.parse(reportDetails)[0].title;
+const details = JSON.parse(reportDetails);
 
-console.log(details[0].timeframes);
+for (let i = 0; i <= details.length; i++) {
+  console.log(details[i].title);
+  console.log(i);
+}

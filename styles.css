@@ -181,3 +181,18 @@ body {
 .card__small--title-container > img {
   height: 5px;
 }
+
+.card__small--time {
+  color: var(--white);
+  font-size: 56px;
+  font-weight: 300;
+}
+
+.card__small--time-container {
+  margin: 24px 0 8px 0;
+}
+
+.small__card--previous {
+  color: var(--paleBlue);
+  font-size: 15px;
+}
