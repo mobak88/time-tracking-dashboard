@@ -10,15 +10,15 @@ const activeTimeframeMonthly = document.getElementById('monthly');
 
 const loopThroughReportDetails = function(timeframe, data) {
     if (activeTimeframeDaily.classList.contains('user-card__timeframe--active')) {
-        for (let i = 0;i <= details.length - 1;i++) {
+        for (let i = 0; i <= details.length - 1; i++) {
             timeframe[i].innerHTML = data ? `${details[i].timeframes.daily.current}hrs` : `Last week ${details[i].timeframes.daily.previous}hrs`;
         }
     } else if (activeTimeframeWeekly.classList.contains('user-card__timeframe--active')) {
-        for (let i = 0;i <= details.length - 1;i++) {
+        for (let i = 0; i <= details.length - 1; i++) {
             timeframe[i].innerHTML = data ? `${details[i].timeframes.weekly.current}hrs` : `Last week ${details[i].timeframes.weekly.previous}hrs`;
         }
     } else if (activeTimeframeMonthly.classList.contains('user-card__timeframe--active')) {
-        for (let i = 0;i <= details.length - 1;i++) {
+        for (let i = 0; i <= details.length - 1; i++) {
             timeframe[i].innerHTML = data ? `${details[i].timeframes.monthly.current}hrs` : `Last week ${details[i].timeframes.monthly.previous}hrs`;
         }
     }
@@ -28,7 +28,7 @@ loopThroughReportDetails(currentData, details);
 loopThroughReportDetails(previousData);
 
 const clearTimeFrame = function(timeframe) {
-    for (let i = 0;i <= details.length - 1;i++) {
+    for (let i = 0; i <= details.length - 1; i++) {
         timeframe[i].innerHTML = '';
     }
 };
