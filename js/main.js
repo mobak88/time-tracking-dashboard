@@ -8,6 +8,7 @@ const activeTimeframeDaily = document.getElementById('daily');
 const activeTimeframeWeekly = document.getElementById('weekly');
 const activeTimeframeMonthly = document.getElementById('monthly');
 
+// Could not figure out how to use argument in template literal. Would like to pass timeframe as a argument to reuse the function
 /* const loopThroughReportDetails = function(pastOrPresence, timeframe, current, lastWeek) {
     for (let i = 0;i <= details.length - 1;i++) {
         pastOrPresence[i].innerHTML = `${details[i].timeframes.timeframe.current}hrs`;
