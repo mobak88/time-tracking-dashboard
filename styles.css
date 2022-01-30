@@ -93,6 +93,13 @@ body {
 .user-card__time {
   color: var(--desaturatedBlue);
   margin-left: 32px;
+  background-color: var(--darkBlue);
+  border: none;
+  width: 0px;
+}
+
+.user-card__timeframe--active {
+  color: var(--white);
 }
 
 .user-card__time:hover {
