@@ -29,7 +29,7 @@ const clearTimeFrame = function() {
     }
 
     for (let i = 0;i <= details.length - 1;i++) {
-        previous[i].innerHTML += '';
+        previous[i].innerHTML = '';
     }
 
 };
