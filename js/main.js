@@ -32,6 +32,7 @@ const changeActiveTimeframe = function(timeframe, removeFirst, removeSecond) {
     clearTimeFrame(previousData);
 };
 
+// // How do I use onclick with argument without calling the function before the click
 // activeTimeframeDaily.onclick = changeActiveTimeframe(activeTimeframeDaily);
 // activeTimeframeWeekly.onclick = changeActiveTimeframe(activeTimeframeWeekly);
 // activeTimeframeMonthly.onclick = changeActiveTimeframe(activeTimeframeMonthly);
