@@ -8,14 +8,24 @@ const activeTimeframeDaily = document.getElementById('daily');
 const activeTimeframeWeekly = document.getElementById('weekly');
 const activeTimeframeMonthly = document.getElementById('monthly');
 
-const loopThroughReportDetailsDaily = function(timeframe, data) {
-    for (let i = 0;i <= details.length - 1;i++) {
-        timeframe[i].innerHTML = data ? `${details[i].timeframes.daily.current}hrs` : `Last week ${details[i].timeframes.daily.previous}hrs`;
+const loopThroughReportDetails = function(timeframe, data) {
+    if (activeTimeframeDaily.classList.contains('user-card__timeframe--active')) {
+        for (let i = 0;i <= details.length - 1;i++) {
+            timeframe[i].innerHTML = data ? `${details[i].timeframes.daily.current}hrs` : `Last week ${details[i].timeframes.daily.previous}hrs`;
+        }
+    } else if (activeTimeframeWeekly.classList.contains('user-card__timeframe--active')) {
+        for (let i = 0;i <= details.length - 1;i++) {
+            timeframe[i].innerHTML = data ? `${details[i].timeframes.weekly.current}hrs` : `Last week ${details[i].timeframes.weekly.previous}hrs`;
+        }
+    } else if (activeTimeframeMonthly.classList.contains('user-card__timeframe--active')) {
+        for (let i = 0;i <= details.length - 1;i++) {
+            timeframe[i].innerHTML = data ? `${details[i].timeframes.monthly.current}hrs` : `Last week ${details[i].timeframes.monthly.previous}hrs`;
+        }
     }
 };
 
-loopThroughReportDetailsDaily(currentData, details);
-loopThroughReportDetailsDaily(previousData);
+loopThroughReportDetails(currentData, details);
+loopThroughReportDetails(previousData);
 
 const clearTimeFrame = function(timeframe) {
     for (let i = 0;i <= details.length - 1;i++) {
@@ -40,32 +50,20 @@ const changeActiveTimeframe = function(timeframe, removeFirst, removeSecond) {
 activeTimeframeDaily.addEventListener('click', function() {
     changeActiveTimeframe(activeTimeframeDaily, activeTimeframeWeekly, activeTimeframeMonthly);
 
-    loopThroughReportDetailsDaily(currentData, details);
-    loopThroughReportDetailsDaily(previousData);
+    loopThroughReportDetails(currentData, details);
+    loopThroughReportDetails(previousData);
 });
-
-const loopThroughReportDetailsWeekly = function(timeframe, data) {
-    for (let i = 0;i <= details.length - 1;i++) {
-        timeframe[i].innerHTML = data ? `${details[i].timeframes.weekly.current}hrs` : `Last week ${details[i].timeframes.weekly.previous}hrs`;
-    }
-};
 
 activeTimeframeWeekly.addEventListener('click', function() {
     changeActiveTimeframe(activeTimeframeWeekly, activeTimeframeDaily, activeTimeframeMonthly);
 
-    loopThroughReportDetailsWeekly(currentData, details);
-    loopThroughReportDetailsWeekly(previousData);
+    loopThroughReportDetails(currentData, details);
+    loopThroughReportDetails(previousData);
 });
-
-const loopThroughReportDetailsMonthly = function(timeframe, data) {
-    for (let i = 0;i <= details.length - 1;i++) {
-        timeframe[i].innerHTML = data ? `${details[i].timeframes.monthly.current}hrs` : `Last week ${details[i].timeframes.monthly.previous}hrs`;
-    }
-};
 
 activeTimeframeMonthly.addEventListener('click', function() {
     changeActiveTimeframe(activeTimeframeMonthly, activeTimeframeDaily, activeTimeframeWeekly);
 
-    loopThroughReportDetailsMonthly(currentData, details);
-    loopThroughReportDetailsMonthly(previousData);
+    loopThroughReportDetails(currentData, details);
+    loopThroughReportDetails(previousData);
 });
