@@ -1,6 +1,3 @@
-import reportDetails from './reportDetails.js';
-const details = JSON.parse(reportDetails);
-
 const displayCurrentData = document.querySelectorAll('.card__small--time');
 const displayPreviousData = document.querySelectorAll('.small__card--previous');
 
@@ -9,17 +6,6 @@ const activeTimeframeWeekly = document.getElementById('weekly');
 const activeTimeframeMonthly = document.getElementById('monthly');
 
 let current = true;
-
-function getData() {
-    fetch('data.json')
-        .then(res => res.json())
-        .then(data => {
-            loopThroughReportDetails(displayCurrentData, data, current);
-            loopThroughReportDetails(displayPreviousData, data);
-            console.log(data[0].timeframes.daily.current);
-        })
-        .catch(err => console.log(err));
-}
 
 function loopThroughReportDetails(timeframe, data, current) {
     if (activeTimeframeDaily.classList.contains('user-card__timeframe--active')) {
@@ -39,38 +25,55 @@ function loopThroughReportDetails(timeframe, data, current) {
 
 getData();
 
-const clearTimeFrame = function(timeframe) {
-    for (let i = 0; i <= details.length - 1; i++) {
+function clearTimeFrame(timeframe, data) {
+    for (let i = 0; i < data.length; i++) {
         timeframe[i].innerHTML = '';
     }
 };
 
-const changeActiveTimeframe = function(timeframe, removeFirst, removeSecond) {
+function changeActiveTimeframe(timeframe, removeFirst, removeSecond) {
     timeframe.classList.add('user-card__timeframe--active');
     removeFirst.classList.remove('user-card__timeframe--active');
     removeSecond.classList.remove('user-card__timeframe--active');
-
-    clearTimeFrame(displayCurrentData);
-    clearTimeFrame(displayPreviousData);
 };
 
-activeTimeframeDaily.addEventListener('click', function() {
-    changeActiveTimeframe(activeTimeframeDaily, activeTimeframeWeekly, activeTimeframeMonthly);
+function getData() {
+    fetch('data.json')
+        .then(res => res.json())
+        .then(data => {
+            loopThroughReportDetails(displayCurrentData, data, current);
+            loopThroughReportDetails(displayPreviousData, data);
 
-    // loopThroughReportDetails(displayCurrentData, details);
-    // loopThroughReportDetails(displayPreviousData);
-});
+            activeTimeframeDaily.addEventListener('click', function() {
+                clearTimeFrame(displayCurrentData, data);
+                clearTimeFrame(displayPreviousData, data);
 
-activeTimeframeWeekly.addEventListener('click', function() {
-    changeActiveTimeframe(activeTimeframeWeekly, activeTimeframeDaily, activeTimeframeMonthly);
+                changeActiveTimeframe(activeTimeframeDaily, activeTimeframeWeekly, activeTimeframeMonthly);
 
-    // loopThroughReportDetails(displayCurrentData, details);
-    // loopThroughReportDetails(displayPreviousData);
-});
 
-activeTimeframeMonthly.addEventListener('click', function() {
-    changeActiveTimeframe(activeTimeframeMonthly, activeTimeframeDaily, activeTimeframeWeekly);
+                loopThroughReportDetails(displayCurrentData, data, current);
+                loopThroughReportDetails(displayPreviousData, data);
+            });
 
-    // loopThroughReportDetails(displayCurrentData, details);
-    // loopThroughReportDetails(displayPreviousData);
-});
+            activeTimeframeWeekly.addEventListener('click', function() {
+                clearTimeFrame(displayCurrentData, data);
+                clearTimeFrame(displayPreviousData, data);
+
+                changeActiveTimeframe(activeTimeframeWeekly, activeTimeframeDaily, activeTimeframeMonthly);
+
+                loopThroughReportDetails(displayCurrentData, data, current);
+                loopThroughReportDetails(displayPreviousData, data);
+            });
+
+            activeTimeframeMonthly.addEventListener('click', function() {
+                clearTimeFrame(displayCurrentData, data);
+                clearTimeFrame(displayPreviousData, data);
+
+                changeActiveTimeframe(activeTimeframeMonthly, activeTimeframeDaily, activeTimeframeWeekly);
+
+                loopThroughReportDetails(displayCurrentData, data, current);
+                loopThroughReportDetails(displayPreviousData, data);
+            });
+        })
+        .catch(err => console.log(err));
+}
