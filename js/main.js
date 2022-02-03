@@ -10,20 +10,18 @@ let current = true;
 function loopThroughReportDetails(timeframe, data, current) {
     if (activeTimeframeDaily.classList.contains('user-card__timeframe--active')) {
         for (let i = 0; i < data.length; i++) {
-            timeframe[i].innerHTML = current === true ? `${data[i].timeframes.daily.current}hrs` : `Last week ${data[i].timeframes.daily.previous}hrs`;
+            timeframe[i].innerHTML = current === true ? `${data[i].timeframes.daily.current}hrs` : `Last day - ${data[i].timeframes.daily.previous}hrs`;
         }
     } else if (activeTimeframeWeekly.classList.contains('user-card__timeframe--active')) {
         for (let i = 0; i < data.length; i++) {
-            timeframe[i].innerHTML = current === true ? `${data[i].timeframes.weekly.current}hrs` : `Last week ${data[i].timeframes.weekly.previous}hrs`;
+            timeframe[i].innerHTML = current === true ? `${data[i].timeframes.weekly.current}hrs` : `Last week - ${data[i].timeframes.weekly.previous}hrs`;
         }
     } else if (activeTimeframeMonthly.classList.contains('user-card__timeframe--active')) {
         for (let i = 0; i < data.length; i++) {
-            timeframe[i].innerHTML = current === true ? `${data[i].timeframes.monthly.current}hrs` : `Last week ${data[i].timeframes.monthly.previous}hrs`;
+            timeframe[i].innerHTML = current === true ? `${data[i].timeframes.monthly.current}hrs` : `Last month - ${data[i].timeframes.monthly.previous}hrs`;
         }
     }
 };
-
-getData();
 
 function clearTimeFrame(timeframe, data) {
     for (let i = 0; i < data.length; i++) {
@@ -38,7 +36,7 @@ function changeActiveTimeframe(timeframe, removeFirst, removeSecond) {
 };
 
 function getData() {
-    fetch('data.json')
+    return fetch('data.json')
         .then(res => res.json())
         .then(data => {
             loopThroughReportDetails(displayCurrentData, data, current);
@@ -77,3 +75,5 @@ function getData() {
         })
         .catch(err => console.log(err));
 }
+
+getData();
